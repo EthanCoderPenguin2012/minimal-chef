@@ -1,0 +1,22 @@
+{
+    "git.autofetch": true,
+    "terminal.integrated.sendKeybindingsToShell": true,
+    "git.enableSmartCommit": true,
+    "git.confirmSync": false,
+    "workbench.colorTheme": "Monospace Light",
+    "github.copilot.enable": {
+        "*": true,
+        "plaintext": false,
+        "markdown": true,
+        "scminput": false
+    },
+    "github.copilot.nextEditSuggestions.enabled": true,
+    "git.openRepositoryInParentFolders": "never",
+    "workbench.iconTheme": "monospace-icons",
+    "workbench.productIconTheme": "a-file-icon-vscode-product-icon-theme",
+    "amazonQ.suppressPrompts": {
+        "amazonQChatDisclaimer": true
+    },
+    "files.autoSave": "afterDelay",
+    "workbench.editor.empty.hint": "hidden"
+}

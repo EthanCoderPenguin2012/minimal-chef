@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import {
   Box,
   Drawer,
@@ -10,7 +10,6 @@ import {
   ListItemIcon,
   ListItemText,
   IconButton,
-  Fab,
   SpeedDial,
   SpeedDialAction,
   SpeedDialIcon,
@@ -31,7 +30,6 @@ import {
   Close,
   Mic,
   Link,
-  Store,
   Timer,
   FitnessCenter,
   Casino,
@@ -157,7 +155,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
 
         <BottomNavigation
           value={location.pathname}
-          onChange={(event, newValue) => navigate(newValue)}
+          onChange={(_, newValue) => navigate(newValue)}
           sx={{ position: 'fixed', bottom: 0, left: 0, right: 0 }}
         >
           {menuItems.map((item) => (

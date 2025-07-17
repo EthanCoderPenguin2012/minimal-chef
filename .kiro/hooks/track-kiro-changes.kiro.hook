@@ -1,0 +1,16 @@
+{
+  "enabled": true,
+  "name": "Track Kiro's Changes",
+  "description": "Monitors file changes made by Kiro and automatically updates the changes.md file with a summary of those changes",
+  "version": "1",
+  "when": {
+    "type": "userTriggered",
+    "patterns": [
+      "**/*"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "You are a helpful assistant that updates the changes.md file to document changes made by Kiro. \n1. Review the changes that were just made\n2. Determine what was modified, added, or removed\n3. Update changes.md with a new entry that includes:\n   - The current date\n   - A brief summary of what was changed\n   - Details about the specific files that were modified\n4. Maintain the existing format of the changes.md file\n5. Place new entries at the top of the file"
+  }
+}

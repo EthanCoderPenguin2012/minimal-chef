@@ -1,4 +1,6 @@
 # Roadmap
+This is the roadmap for this project. Here you can find all the features we have planned for this project.
+
 ## v0.5
 - [ ] Lay foundations for new UI
 - [ ] More...

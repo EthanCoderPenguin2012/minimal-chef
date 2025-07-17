@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import {
   Box,
   Typography,
@@ -20,7 +20,6 @@ import {
   Search,
   Favorite,
   FavoriteBorder,
-  FilterList,
   Sort,
   ImportExport,
   Restaurant,
@@ -49,7 +48,6 @@ const Library = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [activeTab, setActiveTab] = useState(0);
   const [sortAnchor, setSortAnchor] = useState<null | HTMLElement>(null);
-  const [filterAnchor, setFilterAnchor] = useState<null | HTMLElement>(null);
   const [sortBy, setSortBy] = useState<'name' | 'date' | 'favorites'>('date');
 
   useEffect(() => {
@@ -129,7 +127,7 @@ const Library = () => {
     switch (source) {
       case 'imported': return <ImportExport />;
       case 'custom': return <Restaurant />;
-      default: return null;
+      default: return <Restaurant />;
     }
   };
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import {
   Box,
   Card,
@@ -20,8 +20,6 @@ import {
   ExpandMore,
   BugReport,
   Clear,
-  Code,
-  Storage,
   NetworkCheck,
   Close,
 } from '@mui/icons-material';

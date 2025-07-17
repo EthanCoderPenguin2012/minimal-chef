@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import {
   Box,
   Typography,
@@ -16,10 +16,18 @@ import {
   ListItemText,
   Chip,
 } from '@mui/material';
-import { Add, Restaurant } from '@mui/icons-material';
+import { Add } from '@mui/icons-material';
 
 const MealLogging = () => {
-  const [meals, setMeals] = useState([
+  interface Meal {
+    id: number;
+    date: string;
+    meal: string;
+    recipe: string;
+    calories: number;
+  }
+
+  const [meals, setMeals] = useState<Meal[]>([
     { id: 1, date: '2024-01-15', meal: 'Breakfast', recipe: 'Avocado Toast', calories: 320 },
     { id: 2, date: '2024-01-15', meal: 'Lunch', recipe: 'Caesar Salad', calories: 450 },
     { id: 3, date: '2024-01-15', meal: 'Dinner', recipe: 'Grilled Salmon', calories: 580 },

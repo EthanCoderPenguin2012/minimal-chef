@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {
   Box,
   Card,
@@ -26,7 +26,7 @@ const Login = () => {
   const { login, register, verifyCode, user } = useAuth();
   const navigate = useNavigate();
   
-  React.useEffect(() => {
+  useEffect(() => {
     if (user) {
       navigate('/');
     }

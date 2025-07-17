@@ -29,7 +29,8 @@ import Login from './pages/Login';
 import Library from './pages/Library';
 
 const AppContent: React.FC = () => {
-  const { isDarkMode } = useTheme();
+  // isDarkMode is used in the parent component
+  const { isDarkMode: _ } = useTheme();
   const { isDebugMode } = useDebug();
 
   return (

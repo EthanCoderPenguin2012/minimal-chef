@@ -1,0 +1,59 @@
+name: Update Changes
+
+on:
+  push:
+    branches: [ main, dev ]
+    paths-ignore:
+      - 'changes.md'
+
+jobs:
+  update-changes:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+        token: ${{ secrets.GITHUB_TOKEN }}
+    
+    - name: Generate changes.md
+      run: |
+        echo "# Recent Changes" > changes.md
+        echo "" >> changes.md
+        echo "Last updated: $(date)" >> changes.md
+        echo "" >> changes.md
+        
+        # Get the last 10 commits with diffs
+        for commit in $(git log --oneline -10 --format="%H"); do
+          echo "## Commit: $(git log -1 --format="%s" $commit)" >> changes.md
+          echo "**Date:** $(git log -1 --format="%cd" --date=short $commit)" >> changes.md
+          echo "**Author:** $(git log -1 --format="%an" $commit)" >> changes.md
+          echo "" >> changes.md
+          
+          # Get diff for this commit
+          echo '```diff' >> changes.md
+          git show $commit --stat --format="" >> changes.md
+          echo '```' >> changes.md
+          echo "" >> changes.md
+          
+          # Show actual changes (limited)
+          echo '<details><summary>View Changes</summary>' >> changes.md
+          echo "" >> changes.md
+          echo '```diff' >> changes.md
+          git show $commit --format="" | head -100 >> changes.md
+          echo '```' >> changes.md
+          echo "</details>" >> changes.md
+          echo "" >> changes.md
+        done
+    
+    - name: Commit changes
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add changes.md
+        if git diff --staged --quiet; then
+          echo "No changes to commit"
+        else
+          git commit -m "Auto-update changes.md [skip ci]"
+          git push origin HEAD
+        fi

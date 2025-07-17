@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getAllRecipes, internationalRecipes } from '../utils/recipeDatabase';
 import {
@@ -16,10 +16,17 @@ import {
 const cuisineTypes = ['All', 'Italian', 'Indian', 'Japanese', 'Mexican', 'French', 'Thai', 'Chinese', 'Korean', 'Greek', 'Moroccan', 'Spanish', 'Turkish', 'Brazilian', 'Vietnamese', 'Peruvian', 'Lebanese', 'British', 'American', 'German', 'Russian', 'Ethiopian', 'Nigerian', 'Jamaican', 'Argentinian', 'Australian', 'Canadian'];
 
 const discoverRecipes = getAllRecipes().map(recipe => {
-  const cuisineKey = Object.keys(internationalRecipes).find(country => 
-    internationalRecipes[country].some(r => r.id === recipe.id)
-  );
-  const cuisine = cuisineKey ? cuisineKey.charAt(0).toUpperCase() + cuisineKey.slice(1) : '';
+  let cuisine = '';
+  
+  // Find the cuisine for this recipe
+  for (const country of Object.keys(internationalRecipes)) {
+    const recipes = internationalRecipes[country as keyof typeof internationalRecipes];
+    if (recipes && recipes.some(r => r.id === recipe.id)) {
+      cuisine = country.charAt(0).toUpperCase() + country.slice(1);
+      break;
+    }
+  }
+  
   return {
     id: recipe.id,
     title: recipe.name,
@@ -44,19 +51,23 @@ const Discover: React.FC = () => {
       
       <Tabs
         value={selectedCuisine}
-        onChange={(e, newValue) => setSelectedCuisine(newValue as number)}
+        onChange={(_, newValue) => setSelectedCuisine(newValue as number)}
         sx={{ mb: 3 }}
         variant="scrollable"
         scrollButtons="auto"
       >
-        {cuisineTypes.map((cuisine, index) => (
+        {cuisineTypes.map((cuisine) => (
           <Tab key={cuisine} label={cuisine} />
         ))}
       </Tabs>
 
       <Grid container spacing={3}>
         {discoverRecipes
-          .filter(recipe => selectedCuisine === 0 || recipe.cuisine?.toLowerCase() === cuisineTypes[selectedCuisine].toLowerCase())
+          .filter(recipe => {
+            if (selectedCuisine === 0) return true;
+            const selectedCuisineType = cuisineTypes[selectedCuisine];
+            return selectedCuisineType && recipe.cuisine?.toLowerCase() === selectedCuisineType.toLowerCase();
+          })
           .map((recipe) => (
           <Grid item xs={12} sm={6} md={4} key={recipe.id}>
             <Card 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Box, Typography, TextField, Button, Card, CardContent, Grid, IconButton, List, ListItem, ListItemText, ListItemSecondaryAction, Chip } from '@mui/material';
 import { Add, Delete, PhotoCamera } from '@mui/icons-material';
 

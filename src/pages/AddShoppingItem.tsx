@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import {
   Box,
   Typography,
@@ -14,7 +14,7 @@ import {
   Grid,
   Alert,
 } from '@mui/material';
-import { Add, ShoppingCart } from '@mui/icons-material';
+import { Add } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
 
 const AddShoppingItem: React.FC = () => {
