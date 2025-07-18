@@ -1,0 +1,38 @@
+{
+  "appName": "Minimal Chef",
+  "navigation": {
+    "home": "Home",
+    "recipes": "Recipes",
+    "discover": "Discover",
+    "shopping": "Shopping List",
+    "settings": "Settings"
+  },
+  "actions": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "add": "Add",
+    "remove": "Remove",
+    "search": "Search",
+    "filter": "Filter",
+    "sort": "Sort",
+    "back": "Back"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "success": "Success!",
+    "noResults": "No results found",
+    "confirm": "Are you sure?",
+    "yes": "Yes",
+    "no": "No"
+  },
+  "language": {
+    "selector": "Language",
+    "select": "Select language",
+    "current": "Current language",
+    "changeSuccess": "Language changed successfully",
+    "changeFailed": "Failed to change language"
+  }
+}

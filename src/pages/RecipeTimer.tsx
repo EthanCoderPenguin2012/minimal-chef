@@ -11,25 +11,35 @@ import {
   Stack,
   Alert,
 } from '@mui/material';
-import { PlayArrow, Pause, Stop, Add, Remove, Alarm } from '@mui/icons-material';
+import { PlayArrow, Pause, Stop, Remove, Alarm } from '@mui/icons-material';
 
 const RecipeTimer = () => {
-  const [timers, setTimers] = useState<Array<{id: number, name: string, duration: number, remaining: number, isActive: boolean}>>([]);
+  const [timers, setTimers] = useState<
+    Array<{
+      id: number;
+      name: string;
+      duration: number;
+      remaining: number;
+      isActive: boolean;
+    }>
+  >([]);
   const [nextId, setNextId] = useState(1);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setTimers(prev => prev.map(timer => {
-        if (timer.isActive && timer.remaining > 0) {
-          const newRemaining = timer.remaining - 1;
-          if (newRemaining === 0) {
-            new Notification(`Timer "${timer.name}" finished!`);
-            return { ...timer, remaining: 0, isActive: false };
+      setTimers((prev) =>
+        prev.map((timer) => {
+          if (timer.isActive && timer.remaining > 0) {
+            const newRemaining = timer.remaining - 1;
+            if (newRemaining === 0) {
+              new Notification(`Timer "${timer.name}" finished!`);
+              return { ...timer, remaining: 0, isActive: false };
+            }
+            return { ...timer, remaining: newRemaining };
           }
-          return { ...timer, remaining: newRemaining };
-        }
-        return timer;
-      }));
+          return timer;
+        })
+      );
     }, 1000);
 
     return () => clearInterval(interval);
@@ -37,30 +47,39 @@ const RecipeTimer = () => {
 
   const addTimer = (name: string, minutes: number) => {
     const duration = minutes * 60;
-    setTimers(prev => [...prev, {
-      id: nextId,
-      name,
-      duration,
-      remaining: duration,
-      isActive: false
-    }]);
-    setNextId(prev => prev + 1);
+    setTimers((prev) => [
+      ...prev,
+      {
+        id: nextId,
+        name,
+        duration,
+        remaining: duration,
+        isActive: false,
+      },
+    ]);
+    setNextId((prev) => prev + 1);
   };
 
   const toggleTimer = (id: number) => {
-    setTimers(prev => prev.map(timer => 
-      timer.id === id ? { ...timer, isActive: !timer.isActive } : timer
-    ));
+    setTimers((prev) =>
+      prev.map((timer) =>
+        timer.id === id ? { ...timer, isActive: !timer.isActive } : timer
+      )
+    );
   };
 
   const resetTimer = (id: number) => {
-    setTimers(prev => prev.map(timer => 
-      timer.id === id ? { ...timer, remaining: timer.duration, isActive: false } : timer
-    ));
+    setTimers((prev) =>
+      prev.map((timer) =>
+        timer.id === id
+          ? { ...timer, remaining: timer.duration, isActive: false }
+          : timer
+      )
+    );
   };
 
   const removeTimer = (id: number) => {
-    setTimers(prev => prev.filter(timer => timer.id !== id));
+    setTimers((prev) => prev.filter((timer) => timer.id !== id));
   };
 
   const formatTime = (seconds: number) => {
@@ -89,9 +108,11 @@ const RecipeTimer = () => {
 
       <Card sx={{ mb: 3 }}>
         <CardContent>
-          <Typography variant="h6" gutterBottom>Quick Timers</Typography>
+          <Typography variant="h6" gutterBottom>
+            Quick Timers
+          </Typography>
           <Stack direction="row" spacing={1} flexWrap="wrap">
-            {presetTimers.map(preset => (
+            {presetTimers.map((preset) => (
               <Button
                 key={preset.name}
                 variant="outlined"
@@ -105,25 +126,45 @@ const RecipeTimer = () => {
         </CardContent>
       </Card>
 
-      {timers.map(timer => (
+      {timers.map((timer) => (
         <Card key={timer.id} sx={{ mb: 2 }}>
           <CardContent>
-            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
+            <Box
+              sx={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                mb: 2,
+              }}
+            >
               <Typography variant="h6">{timer.name}</Typography>
-              <Chip 
-                label={timer.remaining === 0 ? 'DONE!' : formatTime(timer.remaining)}
-                color={timer.remaining === 0 ? 'success' : timer.isActive ? 'primary' : 'default'}
+              <Chip
+                label={
+                  timer.remaining === 0 ? 'DONE!' : formatTime(timer.remaining)
+                }
+                color={
+                  timer.remaining === 0
+                    ? 'success'
+                    : timer.isActive
+                      ? 'primary'
+                      : 'default'
+                }
               />
             </Box>
-            
-            <LinearProgress 
-              variant="determinate" 
-              value={((timer.duration - timer.remaining) / timer.duration) * 100}
+
+            <LinearProgress
+              variant="determinate"
+              value={
+                ((timer.duration - timer.remaining) / timer.duration) * 100
+              }
               sx={{ mb: 2 }}
             />
-            
+
             <Box sx={{ display: 'flex', gap: 1 }}>
-              <IconButton onClick={() => toggleTimer(timer.id)} disabled={timer.remaining === 0}>
+              <IconButton
+                onClick={() => toggleTimer(timer.id)}
+                disabled={timer.remaining === 0}
+              >
                 {timer.isActive ? <Pause /> : <PlayArrow />}
               </IconButton>
               <IconButton onClick={() => resetTimer(timer.id)}>
@@ -138,7 +179,12 @@ const RecipeTimer = () => {
       ))}
 
       {timers.length === 0 && (
-        <Typography variant="body1" color="text.secondary" align="center" sx={{ mt: 4 }}>
+        <Typography
+          variant="body1"
+          color="text.secondary"
+          align="center"
+          sx={{ mt: 4 }}
+        >
           No active timers. Add one using the quick timers above!
         </Typography>
       )}

@@ -1,5 +1,18 @@
 import { useState } from 'react';
-import { Box, Typography, TextField, Button, Card, CardContent, Grid, IconButton, List, ListItem, ListItemText, ListItemSecondaryAction, Chip } from '@mui/material';
+import {
+  Box,
+  Typography,
+  TextField,
+  Button,
+  Card,
+  CardContent,
+  Grid,
+  IconButton,
+  List,
+  ListItem,
+  ListItemSecondaryAction,
+  Chip,
+} from '@mui/material';
 import { Add, Delete, PhotoCamera } from '@mui/icons-material';
 
 interface NewRecipeState {
@@ -22,49 +35,52 @@ const NewRecipe = () => {
     image: null,
     tags: [],
     ingredients: [''],
-    instructions: ['']
+    instructions: [''],
   });
   const [newTag, setNewTag] = useState('');
 
   const addIngredient = () => {
-    setRecipe({...recipe, ingredients: [...recipe.ingredients, '']});
+    setRecipe({ ...recipe, ingredients: [...recipe.ingredients, ''] });
   };
 
   const updateIngredient = (index: number, value: string) => {
     const newIngredients = [...recipe.ingredients];
     newIngredients[index] = value;
-    setRecipe({...recipe, ingredients: newIngredients});
+    setRecipe({ ...recipe, ingredients: newIngredients });
   };
 
   const removeIngredient = (index: number) => {
     const newIngredients = recipe.ingredients.filter((_, i) => i !== index);
-    setRecipe({...recipe, ingredients: newIngredients});
+    setRecipe({ ...recipe, ingredients: newIngredients });
   };
 
   const addInstruction = () => {
-    setRecipe({...recipe, instructions: [...recipe.instructions, '']});
+    setRecipe({ ...recipe, instructions: [...recipe.instructions, ''] });
   };
 
   const updateInstruction = (index: number, value: string) => {
     const newInstructions = [...recipe.instructions];
     newInstructions[index] = value;
-    setRecipe({...recipe, instructions: newInstructions});
+    setRecipe({ ...recipe, instructions: newInstructions });
   };
 
   const removeInstruction = (index: number) => {
     const newInstructions = recipe.instructions.filter((_, i) => i !== index);
-    setRecipe({...recipe, instructions: newInstructions});
+    setRecipe({ ...recipe, instructions: newInstructions });
   };
 
   const addTag = () => {
     if (newTag.trim() && !recipe.tags.includes(newTag.trim())) {
-      setRecipe({...recipe, tags: [...recipe.tags, newTag.trim()]});
+      setRecipe({ ...recipe, tags: [...recipe.tags, newTag.trim()] });
       setNewTag('');
     }
   };
 
   const removeTag = (tagToRemove: string) => {
-    setRecipe({...recipe, tags: recipe.tags.filter(tag => tag !== tagToRemove)});
+    setRecipe({
+      ...recipe,
+      tags: recipe.tags.filter((tag) => tag !== tagToRemove),
+    });
   };
 
   const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -73,7 +89,7 @@ const NewRecipe = () => {
       const reader = new FileReader();
       reader.onload = (e) => {
         if (e.target && typeof e.target.result === 'string') {
-          setRecipe({...recipe, image: e.target.result});
+          setRecipe({ ...recipe, image: e.target.result });
         }
       };
       reader.readAsDataURL(file);
@@ -87,18 +103,23 @@ const NewRecipe = () => {
       description: recipe.description,
       servings: parseInt(recipe.servings) || 4,
       cookTime: recipe.cookTime,
-      ingredients: recipe.ingredients.filter(ing => ing.trim()),
-      instructions: recipe.instructions.filter(inst => inst.trim()),
+      ingredients: recipe.ingredients.filter((ing) => ing.trim()),
+      instructions: recipe.instructions.filter((inst) => inst.trim()),
       tags: recipe.tags,
       image: recipe.image,
       source: 'custom',
-      createdAt: new Date().toISOString()
+      createdAt: new Date().toISOString(),
     };
-    
-    const existingRecipes = JSON.parse(localStorage.getItem('minimalChefCustomRecipes') || '[]');
+
+    const existingRecipes = JSON.parse(
+      localStorage.getItem('minimalChefCustomRecipes') || '[]'
+    );
     existingRecipes.push(newRecipe);
-    localStorage.setItem('minimalChefCustomRecipes', JSON.stringify(existingRecipes));
-    
+    localStorage.setItem(
+      'minimalChefCustomRecipes',
+      JSON.stringify(existingRecipes)
+    );
+
     alert('Recipe saved to Library!');
   };
 
@@ -116,7 +137,9 @@ const NewRecipe = () => {
                 fullWidth
                 label="Recipe Title"
                 value={recipe.title}
-                onChange={(e) => setRecipe({...recipe, title: e.target.value})}
+                onChange={(e) =>
+                  setRecipe({ ...recipe, title: e.target.value })
+                }
                 sx={{ mb: 2 }}
               />
               <TextField
@@ -125,7 +148,9 @@ const NewRecipe = () => {
                 rows={3}
                 label="Description"
                 value={recipe.description}
-                onChange={(e) => setRecipe({...recipe, description: e.target.value})}
+                onChange={(e) =>
+                  setRecipe({ ...recipe, description: e.target.value })
+                }
                 sx={{ mb: 2 }}
               />
               <Grid container spacing={2}>
@@ -135,7 +160,9 @@ const NewRecipe = () => {
                     label="Cook Time"
                     placeholder="e.g., 30 min"
                     value={recipe.cookTime}
-                    onChange={(e) => setRecipe({...recipe, cookTime: e.target.value})}
+                    onChange={(e) =>
+                      setRecipe({ ...recipe, cookTime: e.target.value })
+                    }
                   />
                 </Grid>
                 <Grid item xs={6}>
@@ -144,7 +171,9 @@ const NewRecipe = () => {
                     label="Servings"
                     type="number"
                     value={recipe.servings}
-                    onChange={(e) => setRecipe({...recipe, servings: e.target.value})}
+                    onChange={(e) =>
+                      setRecipe({ ...recipe, servings: e.target.value })
+                    }
                   />
                 </Grid>
               </Grid>
@@ -217,25 +246,27 @@ const NewRecipe = () => {
               </Typography>
               {recipe.image ? (
                 <Box sx={{ mb: 2 }}>
-                  <img 
-                    src={recipe.image} 
-                    alt="Recipe" 
+                  <img
+                    src={recipe.image}
+                    alt="Recipe"
                     style={{ width: '100%', borderRadius: 8 }}
                   />
                 </Box>
               ) : (
-                <Box 
-                  sx={{ 
-                    height: 200, 
-                    border: '2px dashed', 
+                <Box
+                  sx={{
+                    height: 200,
+                    border: '2px dashed',
                     borderColor: 'divider',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    mb: 2
+                    mb: 2,
                   }}
                 >
-                  <Typography color="text.secondary">No image uploaded</Typography>
+                  <Typography color="text.secondary">
+                    No image uploaded
+                  </Typography>
                 </Box>
               )}
               <input

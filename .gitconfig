@@ -1,0 +1,49 @@
+[core]
+	autocrlf = false
+	safecrlf = true
+	editor = code --wait
+	excludesfile = ~/.gitignore_global
+
+[color]
+	ui = auto
+
+[pull]
+	rebase = true
+
+[push]
+	default = current
+
+[fetch]
+	prune = true
+
+[diff]
+	tool = vscode
+
+[difftool "vscode"]
+	cmd = code --wait --diff $LOCAL $REMOTE
+
+[merge]
+	tool = vscode
+	conflictstyle = diff3
+
+[mergetool "vscode"]
+	cmd = code --wait --merge $REMOTE $LOCAL $BASE $MERGED
+
+[alias]
+	st = status
+	co = checkout
+	ci = commit
+	br = branch
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	unstage = reset HEAD --
+	last = log -1 HEAD
+	visual = !gitk
+
+[commit]
+	template = ~/.gitmessage
+
+[help]
+	autocorrect = 1
+
+[init]
+	defaultBranch = main

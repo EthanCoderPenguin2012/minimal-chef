@@ -1,0 +1,22 @@
+{
+  "title": "Lista de Compras",
+  "addItem": "Añadir Artículo",
+  "categories": {
+    "produce": "Productos Frescos",
+    "dairy": "Lácteos",
+    "meat": "Carnes",
+    "bakery": "Panadería",
+    "pantry": "Despensa",
+    "frozen": "Congelados",
+    "other": "Otros"
+  },
+  "quantity": "Cantidad",
+  "unit": "Unidad",
+  "item": "Artículo",
+  "category": "Categoría",
+  "clearCompleted": "Borrar Completados",
+  "clearAll": "Borrar Todo",
+  "noItems": "No hay artículos en tu lista de compras",
+  "markAllComplete": "Marcar Todo como Completado",
+  "markAllIncomplete": "Marcar Todo como Incompleto"
+}

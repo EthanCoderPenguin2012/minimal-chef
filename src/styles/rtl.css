@@ -1,0 +1,87 @@
+/* RTL Support Styles */
+
+/* Basic RTL adjustments */
+html[dir='rtl'] body {
+  text-align: right;
+}
+
+/* Adjust Material UI components for RTL */
+html[dir='rtl'] .MuiListItemIcon-root {
+  margin-right: 0;
+  margin-left: 16px;
+}
+
+html[dir='rtl'] .MuiListItemSecondaryAction-root {
+  right: auto;
+  left: 16px;
+}
+
+html[dir='rtl'] .MuiDrawer-paper {
+  left: auto;
+  right: 0;
+}
+
+/* Adjust form components for RTL */
+html[dir='rtl'] .MuiInputLabel-root {
+  left: auto;
+  right: 0;
+  transform-origin: top right;
+}
+
+html[dir='rtl'] .MuiInput-root {
+  padding-right: 0;
+  padding-left: 12px;
+}
+
+html[dir='rtl'] .MuiInputAdornment-positionStart {
+  margin-right: 0;
+  margin-left: 8px;
+}
+
+html[dir='rtl'] .MuiInputAdornment-positionEnd {
+  margin-left: 0;
+  margin-right: 8px;
+}
+
+/* Adjust icons and buttons for RTL */
+html[dir='rtl'] .MuiButton-startIcon {
+  margin-right: 0;
+  margin-left: 8px;
+}
+
+html[dir='rtl'] .MuiButton-endIcon {
+  margin-left: 0;
+  margin-right: 8px;
+}
+
+/* Adjust dialogs and modals for RTL */
+html[dir='rtl'] .MuiDialogActions-root {
+  justify-content: flex-start;
+}
+
+/* Adjust navigation components for RTL */
+html[dir='rtl'] .MuiBottomNavigationAction-wrapper {
+  flex-direction: row-reverse;
+}
+
+/* Adjust menu items for RTL */
+html[dir='rtl'] .MuiMenuItem-root {
+  padding-right: 16px;
+  padding-left: 48px;
+}
+
+/* Adjust tooltips for RTL */
+html[dir='rtl'] .MuiTooltip-popper {
+  text-align: right;
+}
+
+/* Adjust form controls for RTL */
+html[dir='rtl'] .MuiFormControlLabel-root {
+  margin-left: 0;
+  margin-right: -11px;
+}
+
+/* Adjust tabs for RTL */
+html[dir='rtl'] .MuiTab-wrapper {
+  flex-direction: row-reverse;
+}

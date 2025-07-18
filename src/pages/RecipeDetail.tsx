@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import {
   Box,
   Typography,
@@ -26,6 +26,7 @@ import {
   VolumeUp,
 } from '@mui/icons-material';
 import { useNavigate, useParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 import { getRecipeDetails } from '../utils/recipeDetailService';
 
@@ -33,23 +34,30 @@ const RecipeDetail: React.FC = () => {
   const navigate = useNavigate();
   const { id } = useParams<{ id: string }>();
   const [isFavorite, setIsFavorite] = useState(false);
-  const [rating, setRating] = useState(4.5);
+  const [rating] = useState(4.5);
+  const { t } = useTranslation(['recipes', 'common']);
 
   const recipe = getRecipeDetails(parseInt(id || '0')) || {
     id: parseInt(id || '0'),
-    name: 'Recipe Not Found',
-    title: 'Recipe Not Found',
+    name: t('recipeNotFound', 'Recipe Not Found'),
+    title: t('recipeNotFound', 'Recipe Not Found'),
     image: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800',
-    description: 'This recipe could not be found.',
+    description: t('recipeNotFoundDesc', 'This recipe could not be found.'),
     cookTime: '30 min',
     prepTime: '15 min',
     servings: 4,
-    difficulty: 'Medium',
+    difficulty: t('difficulty.medium', 'Medium'),
     calories: 400,
-    tags: ['Unknown'],
-    ingredients: ['Recipe not found'],
-    instructions: ['Recipe not found'],
-    nutrition: { calories: 400, protein: '20g', carbs: '45g', fat: '15g', fiber: '4g' }
+    tags: [t('unknown', 'Unknown')],
+    ingredients: [t('recipeNotFound', 'Recipe not found')],
+    instructions: [t('recipeNotFound', 'Recipe not found')],
+    nutrition: {
+      calories: 400,
+      protein: '20g',
+      carbs: '45g',
+      fat: '15g',
+      fiber: '4g',
+    },
   };
 
   const speakInstructions = () => {
@@ -75,7 +83,14 @@ const RecipeDetail: React.FC = () => {
           alt={recipe.title}
         />
         <CardContent>
-          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', mb: 2 }}>
+          <Box
+            sx={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'flex-start',
+              mb: 2,
+            }}
+          >
             <Typography variant="h4" component="h1">
               {recipe.title}
             </Typography>
@@ -99,26 +114,34 @@ const RecipeDetail: React.FC = () => {
               <Box sx={{ textAlign: 'center' }}>
                 <Timer />
                 <Typography variant="body2">{recipe.cookTime}</Typography>
-                <Typography variant="caption">Cook Time</Typography>
+                <Typography variant="caption">
+                  {t('cookTime', 'Cook Time')}
+                </Typography>
               </Box>
             </Grid>
             <Grid item xs={3}>
               <Box sx={{ textAlign: 'center' }}>
                 <People />
                 <Typography variant="body2">{recipe.servings}</Typography>
-                <Typography variant="caption">Servings</Typography>
+                <Typography variant="caption">
+                  {t('servings', 'Servings')}
+                </Typography>
               </Box>
             </Grid>
             <Grid item xs={3}>
               <Box sx={{ textAlign: 'center' }}>
                 <Typography variant="body2">{recipe.calories}</Typography>
-                <Typography variant="caption">Calories</Typography>
+                <Typography variant="caption">
+                  {t('calories', 'Calories')}
+                </Typography>
               </Box>
             </Grid>
             <Grid item xs={3}>
               <Box sx={{ textAlign: 'center' }}>
                 <Rating value={rating} readOnly size="small" />
-                <Typography variant="caption">Rating</Typography>
+                <Typography variant="caption">
+                  {t('rating', 'Rating')}
+                </Typography>
               </Box>
             </Grid>
           </Grid>
@@ -129,23 +152,23 @@ const RecipeDetail: React.FC = () => {
               startIcon={<PlayArrow />}
               onClick={() => navigate('/voice-chef')}
             >
-              Start Cooking
+              {t('startCooking', 'Start Cooking')}
             </Button>
             <Button
               variant="outlined"
               startIcon={<ShoppingCart />}
               onClick={addToShoppingList}
             >
-              Add to List
+              {t('addToShoppingList', 'Add to List')}
             </Button>
             <Button
               variant="outlined"
               startIcon={<VolumeUp />}
               onClick={speakInstructions}
             >
-              Read Aloud
+              {t('readAloud', 'Read Aloud')}
             </Button>
-            <IconButton>
+            <IconButton aria-label={t('share', 'Share')}>
               <Share />
             </IconButton>
           </Box>
@@ -204,7 +227,10 @@ const RecipeDetail: React.FC = () => {
               <Grid item xs={6} sm={2.4} key={key}>
                 <Box sx={{ textAlign: 'center' }}>
                   <Typography variant="h6">{value}</Typography>
-                  <Typography variant="caption" sx={{ textTransform: 'capitalize' }}>
+                  <Typography
+                    variant="caption"
+                    sx={{ textTransform: 'capitalize' }}
+                  >
                     {key}
                   </Typography>
                 </Box>

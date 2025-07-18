@@ -1,0 +1,23 @@
+{
+  "title": "Recettes",
+  "newRecipe": "Nouvelle Recette",
+  "importRecipe": "Importer une Recette",
+  "recipeDetails": "Détails de la Recette",
+  "ingredients": "Ingrédients",
+  "instructions": "Instructions",
+  "prepTime": "Temps de Préparation",
+  "cookTime": "Temps de Cuisson",
+  "servings": "Portions",
+  "categories": "Catégories",
+  "tags": "Tags",
+  "addToShoppingList": "Ajouter à la Liste d'Achats",
+  "noRecipes": "Aucune recette trouvée",
+  "searchRecipes": "Rechercher des recettes",
+  "filterBy": "Filtrer par",
+  "sortBy": "Trier par",
+  "difficulty": {
+    "easy": "Facile",
+    "medium": "Moyen",
+    "hard": "Difficile"
+  }
+}

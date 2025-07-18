@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import {
   Box,
   Typography,
@@ -14,6 +14,7 @@ import {
   Divider,
 } from '@mui/material';
 import { Delete, Add } from '@mui/icons-material';
+import { useTranslation } from 'react-i18next';
 
 interface ShoppingItem {
   id: number;
@@ -23,63 +24,89 @@ interface ShoppingItem {
 }
 
 const ShoppingList: React.FC = () => {
+  const { t } = useTranslation('shopping');
+
   const [items, setItems] = useState<ShoppingItem[]>([
-    { id: 1, text: 'Spaghetti pasta', checked: false, category: 'Pantry' },
-    { id: 2, text: 'Fresh basil', checked: true, category: 'Produce' },
-    { id: 3, text: 'Parmesan cheese', checked: false, category: 'Dairy' },
-    { id: 4, text: 'Chicken breast', checked: false, category: 'Meat' },
+    {
+      id: 1,
+      text: 'Spaghetti pasta',
+      checked: false,
+      category: t('categories.pantry', 'Pantry'),
+    },
+    {
+      id: 2,
+      text: 'Fresh basil',
+      checked: true,
+      category: t('categories.produce', 'Produce'),
+    },
+    {
+      id: 3,
+      text: 'Parmesan cheese',
+      checked: false,
+      category: t('categories.dairy', 'Dairy'),
+    },
+    {
+      id: 4,
+      text: 'Chicken breast',
+      checked: false,
+      category: t('categories.meat', 'Meat'),
+    },
   ]);
   const [newItem, setNewItem] = useState('');
 
   const addItem = () => {
     if (newItem.trim()) {
-      setItems([...items, {
-        id: Date.now(),
-        text: newItem.trim(),
-        checked: false,
-        category: 'Other'
-      }]);
+      setItems([
+        ...items,
+        {
+          id: Date.now(),
+          text: newItem.trim(),
+          checked: false,
+          category: t('categories.other', 'Other'),
+        },
+      ]);
       setNewItem('');
     }
   };
 
   const toggleItem = (id: number) => {
-    setItems(items.map(item =>
-      item.id === id ? { ...item, checked: !item.checked } : item
-    ));
+    setItems(
+      items.map((item) =>
+        item.id === id ? { ...item, checked: !item.checked } : item
+      )
+    );
   };
 
   const deleteItem = (id: number) => {
-    setItems(items.filter(item => item.id !== id));
+    setItems(items.filter((item) => item.id !== id));
   };
 
-  const groupedItems = items.reduce((acc: Record<string, ShoppingItem[]>, item) => {
-    if (!acc[item.category]) acc[item.category] = [];
-    acc[item.category].push(item);
-    return acc;
-  }, {});
+  const groupedItems = items.reduce(
+    (acc: Record<string, ShoppingItem[]>, item) => {
+      if (!acc[item.category]) acc[item.category] = [];
+      acc[item.category]?.push(item);
+      return acc;
+    },
+    {} as Record<string, ShoppingItem[]>
+  );
 
   return (
     <Box>
       <Typography variant="h4" component="h1" gutterBottom>
-        Shopping List
+        {t('title', 'Shopping List')}
       </Typography>
 
       <Paper sx={{ p: 2, mb: 3 }}>
         <Box sx={{ display: 'flex', gap: 1 }}>
           <TextField
             fullWidth
-            placeholder="Add new item..."
+            placeholder={t('addItem', 'Add new item...')}
             value={newItem}
             onChange={(e) => setNewItem(e.target.value)}
             onKeyPress={(e) => e.key === 'Enter' && addItem()}
           />
-          <Button
-            variant="contained"
-            onClick={addItem}
-            startIcon={<Add />}
-          >
-            Add
+          <Button variant="contained" onClick={addItem} startIcon={<Add />}>
+            {t('addItem', 'Add')}
           </Button>
         </Box>
       </Paper>

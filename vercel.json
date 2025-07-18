@@ -1,11 +1,69 @@
 {
-  "buildCommand": "npm run build",
-  "outputDirectory": "build",
-  "devCommand": "npm start",
-  "rewrites": [
+  "version": 2,
+  "routes": [
+    {
+      "src": "^/static/(.*)",
+      "dest": "/static/$1"
+    },
+    {
+      "src": "^/favicon.ico",
+      "dest": "/favicon.ico"
+    },
+    {
+      "src": "^/manifest.json",
+      "dest": "/manifest.json"
+    },
+    {
+      "src": "^/robots.txt",
+      "dest": "/robots.txt"
+    },
+    {
+      "src": "^/sitemap.xml",
+      "dest": "/sitemap.xml"
+    },
+    {
+      "src": "^/logo(.*).png",
+      "dest": "/logo$1.png"
+    },
+    {
+      "src": ".*",
+      "dest": "/index.html"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/service-worker.js",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
+      ]
+    },
     {
       "source": "/(.*)",
-      "destination": "/index.html"
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-XSS-Protection",
+          "value": "1; mode=block"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://vercel.live https://*.vercel-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://*.unsplash.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://*.vercel-analytics.com https://api.anthropic.com; frame-src 'none'; object-src 'none'"
+        }
+      ]
     }
   ]
 }

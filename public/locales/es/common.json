@@ -1,0 +1,31 @@
+{
+  "appName": "Chef Mínimo",
+  "navigation": {
+    "home": "Inicio",
+    "recipes": "Recetas",
+    "discover": "Descubrir",
+    "shopping": "Lista de Compras",
+    "settings": "Configuración"
+  },
+  "actions": {
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "delete": "Eliminar",
+    "edit": "Editar",
+    "add": "Añadir",
+    "remove": "Quitar",
+    "search": "Buscar",
+    "filter": "Filtrar",
+    "sort": "Ordenar",
+    "back": "Atrás"
+  },
+  "common": {
+    "loading": "Cargando...",
+    "error": "Ha ocurrido un error",
+    "success": "¡Éxito!",
+    "noResults": "No se encontraron resultados",
+    "confirm": "¿Estás seguro?",
+    "yes": "Sí",
+    "no": "No"
+  }
+}

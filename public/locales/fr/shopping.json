@@ -1,0 +1,22 @@
+{
+  "title": "Liste d'Achats",
+  "addItem": "Ajouter un Article",
+  "categories": {
+    "produce": "Produits Frais",
+    "dairy": "Produits Laitiers",
+    "meat": "Viandes",
+    "bakery": "Boulangerie",
+    "pantry": "Garde-manger",
+    "frozen": "Surgelés",
+    "other": "Autres"
+  },
+  "quantity": "Quantité",
+  "unit": "Unité",
+  "item": "Article",
+  "category": "Catégorie",
+  "clearCompleted": "Effacer les Complétés",
+  "clearAll": "Tout Effacer",
+  "noItems": "Aucun article dans votre liste d'achats",
+  "markAllComplete": "Tout Marquer comme Complété",
+  "markAllIncomplete": "Tout Marquer comme Incomplet"
+}

@@ -1,81 +1,138 @@
-<!-- Oi! What are you doing poking around here? If you want the source code, it's public! Just go to github.com/EthanCoderPenguin2012/minimal-chef. Still here? Well, first, here's the license.
- MIT License
-
-Copyright (c) 2025 Minimal Chef
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
- Still Here??? Wow. Well, here it is.-->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Oops! Something's Missing</title>
+  <meta name="theme-color" content="#FF6B35" />
+  <meta name="description" content="Minimal Chef - A simple recipe management app" />
+  <meta name="language" content="en" />
+  <meta http-equiv="content-language" content="en" />
+  
+  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+  <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+  
+  <!-- Preconnect to font sources -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <title>Minimal Chef</title>
+  
   <style>
+    /* Initial loading styles */
+    :root {
+      --start-direction: left;
+      --end-direction: right;
+    }
+    
+    /* RTL support for initial loading */
+    html[dir="rtl"] {
+      --start-direction: right;
+      --end-direction: left;
+    }
+    
     body {
       margin: 0;
       padding: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #fff8f0;
-      color: #333;
+      font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      background-color: #fff8f0;
+    }
+    
+    /* RTL support for body */
+    html[dir="rtl"] body {
+      text-align: right;
+    }
+    
+    .app-loading {
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      min-height: 100vh;
-      text-align: center;
-      flex-direction: column;
+      height: 100vh;
+      width: 100vw;
     }
-    .container {
-      padding: 2rem;
-      border-radius: 12px;
-      background: #fff;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-      max-width: 400px;
+    
+    .app-loading-logo {
+      width: 120px;
+      height: 120px;
+      margin-bottom: 24px;
+      animation: pulse 1.5s infinite ease-in-out;
     }
-    h1 {
-      font-size: 1.8rem;
-      margin-bottom: 1rem;
+    
+    .app-loading-text {
+      font-size: 24px;
+      font-weight: 500;
+      color: #FF6B35;
+      margin-bottom: 16px;
     }
-    p {
-      font-size: 1rem;
-      line-height: 1.5;
+    
+    .app-loading-spinner {
+      width: 40px;
+      height: 40px;
+      border: 4px solid rgba(255, 107, 53, 0.2);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
     }
-    .emoji {
-      font-size: 3rem;
-      margin-bottom: 1rem;
+    
+    /* Adjust spinner animation for RTL */
+    html[dir="ltr"] .app-loading-spinner {
+      border-left-color: #FF6B35;
+    }
+    
+    html[dir="rtl"] .app-loading-spinner {
+      border-right-color: #FF6B35;
+    }
+    
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+    
+    /* Different spin animations for LTR and RTL */
+    html[dir="ltr"] .app-loading-spinner {
+      animation-name: spin-ltr;
+    }
+    
+    html[dir="rtl"] .app-loading-spinner {
+      animation-name: spin-rtl;
+    }
+    
+    @keyframes spin-ltr {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    @keyframes spin-rtl {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(-360deg); }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="emoji">🍳</div>
-    <h1>Something's not quite right...</h1>
-    <p>It looks like your browser doesn't support modern features, or JavaScript is disabled.</p>
-    <p>Please try using a modern browser (like Chrome, Edge, Firefox, or Safari) and make sure JavaScript is enabled.</p>
-    <p>Once you're set, come back and enjoy our minimal chef experience!</p>
-  </div>
-
   <noscript>
-    <!-- This content is shown only if JavaScript is disabled -->
-    <style>
-      body { display: block; }
-    </style>
+    <div style="padding: 2rem; text-align: center; max-width: 600px; margin: 0 auto;">
+      <h1>JavaScript Required</h1>
+      <p>We're sorry, but Minimal Chef requires JavaScript to be enabled in your browser.</p>
+      <p>Please enable JavaScript to continue using this application.</p>
+    </div>
   </noscript>
+  
+  <div id="root">
+    <!-- This content will be replaced by React -->
+    <div class="app-loading">
+      <div class="app-loading-logo">🍳</div>
+      <div class="app-loading-text">Minimal Chef</div>
+      <div class="app-loading-spinner"></div>
+    </div>
+  </div>
+  
+  <!-- This comment will be preserved in the build -->
+  <!-- 
+    Minimal Chef - A simple recipe management app
+    MIT Licensed - See LICENSE file for details
+    https://github.com/EthanCoderPenguin2012/minimal-chef
+  -->
 </body>
 </html>

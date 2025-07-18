@@ -1,0 +1,38 @@
+{
+  "title": "Paramètres",
+  "appearance": {
+    "title": "Apparence",
+    "theme": "Thème",
+    "darkMode": "Mode Sombre",
+    "lightMode": "Mode Clair",
+    "systemDefault": "Défaut du Système"
+  },
+  "language": {
+    "title": "Langue",
+    "selectLanguage": "Sélectionner la Langue",
+    "currentLanguage": "Langue Actuelle"
+  },
+  "account": {
+    "title": "Compte",
+    "profile": "Profil",
+    "signIn": "Se Connecter",
+    "signOut": "Se Déconnecter",
+    "createAccount": "Créer un Compte"
+  },
+  "preferences": {
+    "title": "Préférences",
+    "units": "Unités",
+    "metric": "Métrique",
+    "imperial": "Impérial",
+    "notifications": "Notifications",
+    "enable": "Activer",
+    "disable": "Désactiver"
+  },
+  "about": {
+    "title": "À Propos",
+    "version": "Version",
+    "privacyPolicy": "Politique de Confidentialité",
+    "termsOfService": "Conditions d'Utilisation",
+    "contactUs": "Contactez-nous"
+  }
+}

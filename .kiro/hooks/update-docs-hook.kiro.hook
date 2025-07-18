@@ -1,0 +1,20 @@
+{
+  "enabled": true,
+  "name": "Update Documentation",
+  "description": "Monitors source code changes and prompts for documentation updates in README.md or the docs folder",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": [
+      "src/**/*.ts",
+      "src/**/*.tsx",
+      "api/**/*.js",
+      "*.md",
+      "docs/**/*.md"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "A source file has been modified. Please review the changes and update the relevant documentation in either README.md or the docs folder to ensure documentation stays in sync with the codebase. If the change affects API functionality, consider updating docs/api.md. If it's related to features, update docs/features.md. For contribution guidelines changes, update CONTRIBUTING.md or docs/contributing.md."
+  }
+}

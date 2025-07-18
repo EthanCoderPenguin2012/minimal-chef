@@ -1,0 +1,26 @@
+# These owners will be the default owners for everything in
+# the repo. Unless a later match takes precedence,
+# these users will be requested for review when someone opens a pull request.
+* @minimal-chef/core-team
+
+# Order is important; the last matching pattern takes the most precedence.
+
+# Core app code
+/src/                   @minimal-chef/frontend-team
+/public/                @minimal-chef/frontend-team
+
+# API and backend code
+/api/                   @minimal-chef/backend-team
+
+# Build configuration
+*.js                    @minimal-chef/devops-team
+*.json                  @minimal-chef/devops-team
+*.yml                   @minimal-chef/devops-team
+/.github/workflows/     @minimal-chef/devops-team
+
+# Documentation
+/docs/                  @minimal-chef/docs-team
+*.md                    @minimal-chef/docs-team
+
+# Security-related files
+/SECURITY.md            @minimal-chef/security-team

@@ -1,0 +1,23 @@
+{
+  "title": "الوصفات",
+  "newRecipe": "وصفة جديدة",
+  "importRecipe": "استيراد وصفة",
+  "recipeDetails": "تفاصيل الوصفة",
+  "ingredients": "المكونات",
+  "instructions": "التعليمات",
+  "prepTime": "وقت التحضير",
+  "cookTime": "وقت الطهي",
+  "servings": "الحصص",
+  "categories": "الفئات",
+  "tags": "العلامات",
+  "addToShoppingList": "إضافة إلى قائمة التسوق",
+  "noRecipes": "لم يتم العثور على وصفات",
+  "searchRecipes": "البحث عن وصفات",
+  "filterBy": "تصفية حسب",
+  "sortBy": "ترتيب حسب",
+  "difficulty": {
+    "easy": "سهل",
+    "medium": "متوسط",
+    "hard": "صعب"
+  }
+}

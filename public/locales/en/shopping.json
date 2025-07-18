@@ -1,0 +1,22 @@
+{
+  "title": "Shopping List",
+  "addItem": "Add Item",
+  "categories": {
+    "produce": "Produce",
+    "dairy": "Dairy",
+    "meat": "Meat",
+    "bakery": "Bakery",
+    "pantry": "Pantry",
+    "frozen": "Frozen",
+    "other": "Other"
+  },
+  "quantity": "Quantity",
+  "unit": "Unit",
+  "item": "Item",
+  "category": "Category",
+  "clearCompleted": "Clear Completed",
+  "clearAll": "Clear All",
+  "noItems": "No items in your shopping list",
+  "markAllComplete": "Mark All Complete",
+  "markAllIncomplete": "Mark All Incomplete"
+}

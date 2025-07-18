@@ -1,0 +1,74 @@
+{
+  "short_name": "Minimal Chef",
+  "name": "Minimal Chef - Recipe Management",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "logo192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "logo512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#FF6B35",
+  "background_color": "#fff8f0",
+  "orientation": "portrait",
+  "description": "A simple and elegant recipe management application",
+  "categories": ["food", "cooking", "recipes", "lifestyle"],
+  "lang": "en",
+  "dir": "ltr",
+  "related_applications": [],
+  "prefer_related_applications": false,
+  "shortcuts": [
+    {
+      "name": "New Recipe",
+      "url": "/recipe/new",
+      "description": "Create a new recipe"
+    },
+    {
+      "name": "Shopping List",
+      "url": "/shopping",
+      "description": "View your shopping list"
+    }
+  ],
+  "localized": [
+    {
+      "lang": "en",
+      "dir": "ltr",
+      "name": "Minimal Chef - Recipe Management",
+      "short_name": "Minimal Chef",
+      "description": "A simple and elegant recipe management application"
+    },
+    {
+      "lang": "es",
+      "dir": "ltr",
+      "name": "Minimal Chef - Gestión de Recetas",
+      "short_name": "Minimal Chef",
+      "description": "Una aplicación simple y elegante para gestionar recetas"
+    },
+    {
+      "lang": "fr",
+      "dir": "ltr",
+      "name": "Minimal Chef - Gestion de Recettes",
+      "short_name": "Minimal Chef",
+      "description": "Une application simple et élégante pour gérer vos recettes"
+    },
+    {
+      "lang": "ar",
+      "dir": "rtl",
+      "name": "الطاهي البسيط - إدارة الوصفات",
+      "short_name": "الطاهي البسيط",
+      "description": "تطبيق بسيط وأنيق لإدارة الوصفات"
+    }
+  ]
+}

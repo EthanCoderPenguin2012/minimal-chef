@@ -1,0 +1,53 @@
+# Auto detect text files and perform LF normalization
+* text=auto eol=lf
+
+# Documents
+*.md text diff=markdown
+*.txt text
+*.json text
+*.yml text
+*.yaml text
+
+# Graphics
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.svg text
+
+# Scripts
+*.js text
+*.jsx text
+*.ts text
+*.tsx text
+*.sh text eol=lf
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.ps1 text eol=crlf
+
+# Configuration
+*.env text
+*.env.* text
+*.config text
+*.conf text
+*.ini text
+
+# Source code
+*.css text diff=css
+*.scss text diff=css
+*.sass text
+*.html text diff=html
+*.xml text
+*.xhtml text diff=html
+
+# Compiled output
+*.min.js binary
+*.min.css binary
+build/* binary
+dist/* binary
+
+# Exclude files from exporting
+.gitattributes export-ignore
+.gitignore export-ignore
+.gitkeep export-ignore

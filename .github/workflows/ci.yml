@@ -1,0 +1,67 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [16.x, 18.x]
+
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: npm ci
+    
+    - name: Lint
+      run: npm run lint
+      
+    - name: Type check
+      run: npm run typecheck
+      
+    - name: Test
+      run: npm test
+      
+    - name: Build
+      run: npm run build
+      env:
+        DISABLE_ESLINT_PLUGIN: true
+        NODE_OPTIONS: --max-old-space-size=4096
+        
+    - name: Update changes.md
+      if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+      run: |
+        DATE=$(date +"%B %d, %Y")
+        TEMP_FILE=$(mktemp)
+        echo "# Recent Changes" > $TEMP_FILE
+        echo "" >> $TEMP_FILE
+        echo "This file is automatically updated by GitHub Actions after each push." >> $TEMP_FILE
+        echo "" >> $TEMP_FILE
+        echo "## Latest Changes" >> $TEMP_FILE
+        echo "" >> $TEMP_FILE
+        echo "### $DATE" >> $TEMP_FILE
+        echo "" >> $TEMP_FILE
+        echo "- Automated build completed successfully" >> $TEMP_FILE
+        echo "- Updated from commit: ${GITHUB_SHA::7}" >> $TEMP_FILE
+        echo "" >> $TEMP_FILE
+        cat changes.md | sed -n '/^### /,$p' | tail -n +2 >> $TEMP_FILE
+        mv $TEMP_FILE changes.md
+        
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add changes.md
+        git commit -m "Update changes.md [skip ci]" || echo "No changes to commit"
+        git push

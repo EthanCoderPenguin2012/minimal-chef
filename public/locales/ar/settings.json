@@ -1,0 +1,38 @@
+{
+  "title": "الإعدادات",
+  "appearance": {
+    "title": "المظهر",
+    "theme": "السمة",
+    "darkMode": "الوضع الداكن",
+    "lightMode": "الوضع الفاتح",
+    "systemDefault": "إعدادات النظام"
+  },
+  "language": {
+    "title": "اللغة",
+    "selectLanguage": "اختر اللغة",
+    "currentLanguage": "اللغة الحالية"
+  },
+  "account": {
+    "title": "الحساب",
+    "profile": "الملف الشخصي",
+    "signIn": "تسجيل الدخول",
+    "signOut": "تسجيل الخروج",
+    "createAccount": "إنشاء حساب"
+  },
+  "preferences": {
+    "title": "التفضيلات",
+    "units": "الوحدات",
+    "metric": "متري",
+    "imperial": "إمبراطوري",
+    "notifications": "الإشعارات",
+    "enable": "تفعيل",
+    "disable": "تعطيل"
+  },
+  "about": {
+    "title": "حول",
+    "version": "الإصدار",
+    "privacyPolicy": "سياسة الخصوصية",
+    "termsOfService": "شروط الخدمة",
+    "contactUs": "اتصل بنا"
+  }
+}

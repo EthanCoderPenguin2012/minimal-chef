@@ -1,0 +1,31 @@
+{
+  "appName": "Chef Minimal",
+  "navigation": {
+    "home": "Accueil",
+    "recipes": "Recettes",
+    "discover": "Découvrir",
+    "shopping": "Liste d'Achats",
+    "settings": "Paramètres"
+  },
+  "actions": {
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "delete": "Supprimer",
+    "edit": "Modifier",
+    "add": "Ajouter",
+    "remove": "Retirer",
+    "search": "Rechercher",
+    "filter": "Filtrer",
+    "sort": "Trier",
+    "back": "Retour"
+  },
+  "common": {
+    "loading": "Chargement...",
+    "error": "Une erreur est survenue",
+    "success": "Succès !",
+    "noResults": "Aucun résultat trouvé",
+    "confirm": "Êtes-vous sûr ?",
+    "yes": "Oui",
+    "no": "Non"
+  }
+}

@@ -12,18 +12,19 @@ export const getAllRecipes = (): Recipe[] => {
 };
 
 export const getCountries = () => {
-  return Object.keys(internationalRecipes).map(key => ({
+  return Object.keys(internationalRecipes).map((key) => ({
     key,
     name: key.charAt(0).toUpperCase() + key.slice(1),
-    count: internationalRecipes[key].length
+    count: internationalRecipes[key]?.length || 0,
   }));
 };
 
 export const searchRecipes = (query: string): Recipe[] => {
   const allRecipes = getAllRecipes();
-  return allRecipes.filter(recipe => 
-    recipe.name.toLowerCase().includes(query.toLowerCase()) ||
-    recipe.region.toLowerCase().includes(query.toLowerCase()) ||
-    recipe.difficulty.toLowerCase().includes(query.toLowerCase())
+  return allRecipes.filter(
+    (recipe) =>
+      recipe.name.toLowerCase().includes(query.toLowerCase()) ||
+      recipe.region.toLowerCase().includes(query.toLowerCase()) ||
+      recipe.difficulty.toLowerCase().includes(query.toLowerCase())
   );
 };

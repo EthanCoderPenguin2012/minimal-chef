@@ -1,0 +1,43 @@
+{
+  "title": "Settings",
+  "appearance": {
+    "title": "Appearance",
+    "theme": "Theme",
+    "darkMode": "Dark Mode",
+    "lightMode": "Light Mode",
+    "systemDefault": "System Default"
+  },
+  "language": {
+    "title": "Language",
+    "selectLanguage": "Select Language",
+    "currentLanguage": "Current Language",
+    "languageSettings": "Language Settings",
+    "selectPreferred": "Select your preferred language",
+    "changeLanguage": "Change Language",
+    "rtlSupport": "Right-to-left language support",
+    "translationMissing": "Translation missing"
+  },
+  "account": {
+    "title": "Account",
+    "profile": "Profile",
+    "signIn": "Sign In",
+    "signOut": "Sign Out",
+    "createAccount": "Create Account"
+  },
+  "preferences": {
+    "title": "Preferences",
+    "units": "Units",
+    "metric": "Metric",
+    "imperial": "Imperial",
+    "notifications": "Notifications",
+    "enable": "Enable",
+    "disable": "Disable"
+  },
+  "about": {
+    "title": "About",
+    "version": "Version",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service",
+    "contactUs": "Contact Us"
+  }
+}

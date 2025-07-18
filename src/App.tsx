@@ -1,14 +1,17 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { ThemeProvider, CssBaseline } from '@mui/material';
+import { CssBaseline } from '@mui/material';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/react';
 import { AuthProvider } from './contexts/AuthContext';
 import { DebugProvider, useDebug } from './contexts/DebugContext';
+import { LanguageProvider } from './contexts/LanguageContext';
 import DebugPanel from './components/DebugPanel';
+import RTLThemeProvider from './components/RTLThemeProvider';
 
-import { lightTheme, darkTheme } from './theme';
+import { getThemeWithRTLSupport } from './theme';
 import { useTheme } from './hooks/useTheme';
+import { useLanguage } from './contexts/LanguageContext';
 import Layout from './components/Layout';
 import Recipes from './pages/Recipes';
 import Discover from './pages/Discover';
@@ -36,7 +39,7 @@ const AppContent: React.FC = () => {
   return (
     <>
       <Router>
-          <Layout>
+        <Layout>
           <Routes>
             <Route path="/" element={<Recipes />} />
             <Route path="/discover" element={<Discover />} />
@@ -56,7 +59,7 @@ const AppContent: React.FC = () => {
             <Route path="/login" element={<Login />} />
             <Route path="/library" element={<Library />} />
           </Routes>
-          </Layout>
+        </Layout>
       </Router>
       {isDebugMode && <DebugPanel />}
       <Analytics />
@@ -69,14 +72,15 @@ const App: React.FC = () => {
   const { isDarkMode } = useTheme();
 
   return (
-    <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
-      <CssBaseline />
-      <DebugProvider>
-        <AuthProvider>
-          <AppContent />
-        </AuthProvider>
-      </DebugProvider>
-    </ThemeProvider>
+    <DebugProvider>
+      <LanguageProvider>
+        <RTLThemeProvider isDarkMode={isDarkMode}>
+          <AuthProvider>
+            <AppContent />
+          </AuthProvider>
+        </RTLThemeProvider>
+      </LanguageProvider>
+    </DebugProvider>
   );
 };
 

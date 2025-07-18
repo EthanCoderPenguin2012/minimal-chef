@@ -7,10 +7,9 @@
 
 A minimalist cooking companion app built with React and Material-UI.
 
->[!NOTE]
+> [!NOTE]
 
-
-## Features 
+## Features
 
 - **Recipe Management**: Browse and search your recipe collection
 - **Discover**: Explore new recipes from various cuisines
@@ -21,8 +20,8 @@ A minimalist cooking companion app built with React and Material-UI.
 
 ## Design Specifications
 
-- **Light Mode**: Base color  #EADDCB
-- **Dark Mode**: Base color  #203141
+- **Light Mode**: Base color #EADDCB
+- **Dark Mode**: Base color #203141
 - **Typography**: Times New Roman for headings, Noto Sans for body text
 - **Layout**: Hideable sidebar on desktop, bottom navigation on mobile
 - **FAB**: Floating action button for quick actions
@@ -30,26 +29,32 @@ A minimalist cooking companion app built with React and Material-UI.
 ## Getting Started
 
 1. Clone the repository:
+
    ```bash
    git clone https://github.com/EthanCoderPenguin2012/minimal-chef.git
    cd minimal-chef
    ```
 
 2. Install dependencies:
+
    ```bash
    npm install
    ```
 
 3. Set up environment variables:
+
    ```bash
    cp .env.example .env
    ```
+
    Edit `.env` and add your Claude API key:
+
    ```
    REACT_APP_ANTHROPIC_API_KEY=your_actual_api_key_here
    ```
 
 4. Start the development server:
+
    ```bash
    npm start
    ```
@@ -69,6 +74,7 @@ This app is configured for automatic deployment to Vercel:
 ### Manual Deployment
 
 To deploy manually:
+
 ```bash
 npm run build
 # Then upload the build folder to your hosting provider
@@ -77,6 +83,7 @@ npm run build
 ## API Configuration
 
 To use AI recipe generation, you need a Claude API key from Anthropic:
+
 1. Sign up at [console.anthropic.com](https://console.anthropic.com)
 2. Create an API key
 3. Add it to your `.env` file as `REACT_APP_ANTHROPIC_API_KEY`
@@ -99,7 +106,8 @@ To use AI recipe generation, you need a Claude API key from Anthropic:
 ✅ **Recipe Roulette**: Random recipe suggestions with filters  
 ✅ **Dark/Light Mode**: Theme switching  
 ✅ **Responsive Design**: Mobile and desktop optimized  
-✅ **Analytics & Speed Insights**: Vercel performance tracking
+✅ **Analytics & Speed Insights**: Vercel performance tracking  
+🔄 **Multi-Language Support**: i18next implementation in progress
 
 ## Contributing
 

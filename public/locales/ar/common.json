@@ -1,0 +1,38 @@
+{
+  "appName": "الطاهي البسيط",
+  "navigation": {
+    "home": "الرئيسية",
+    "recipes": "الوصفات",
+    "discover": "استكشاف",
+    "shopping": "قائمة التسوق",
+    "settings": "الإعدادات"
+  },
+  "actions": {
+    "save": "حفظ",
+    "cancel": "إلغاء",
+    "delete": "حذف",
+    "edit": "تعديل",
+    "add": "إضافة",
+    "remove": "إزالة",
+    "search": "بحث",
+    "filter": "تصفية",
+    "sort": "ترتيب",
+    "back": "رجوع"
+  },
+  "common": {
+    "loading": "جاري التحميل...",
+    "error": "حدث خطأ",
+    "success": "تم بنجاح!",
+    "noResults": "لم يتم العثور على نتائج",
+    "confirm": "هل أنت متأكد؟",
+    "yes": "نعم",
+    "no": "لا"
+  },
+  "language": {
+    "selector": "اللغة",
+    "select": "اختر اللغة",
+    "current": "اللغة الحالية",
+    "changeSuccess": "تم تغيير اللغة بنجاح",
+    "changeFailed": "فشل تغيير اللغة"
+  }
+}

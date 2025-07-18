@@ -4,7 +4,6 @@ import {
   Typography,
   Card,
   CardContent,
-  Button,
   IconButton,
   LinearProgress,
   List,
@@ -12,19 +11,20 @@ import {
   ListItemText,
   Chip,
 } from '@mui/material';
-import { 
-  PlayArrow, 
-  Pause, 
-  SkipNext, 
-  SkipPrevious, 
+import {
+  PlayArrow,
+  Pause,
+  SkipNext,
+  SkipPrevious,
   VolumeUp,
   Mic,
-  MicOff 
+  MicOff,
 } from '@mui/icons-material';
 
 // @ts-ignore: Allow use of webkitSpeechRecognition in browsers
 // eslint-disable-next-line
-const SpeechRecognitionType = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+const SpeechRecognitionType =
+  (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
 
 const VoiceChef = () => {
   const [currentStep, setCurrentStep] = useState(0);
@@ -43,8 +43,8 @@ const VoiceChef = () => {
       'Add hot pasta to the skillet with pancetta',
       'Remove from heat and quickly stir in egg mixture',
       'Add pasta water gradually until creamy',
-      'Season with black pepper and serve immediately'
-    ]
+      'Season with black pepper and serve immediately',
+    ],
   };
 
   useEffect(() => {
@@ -55,11 +55,15 @@ const VoiceChef = () => {
       speechRecognition.lang = 'en-US';
 
       speechRecognition.onresult = (event: any) => {
-        const transcript = event.results[event.results.length - 1][0].transcript.toLowerCase();
-        
+        const transcript =
+          event.results[event.results.length - 1][0].transcript.toLowerCase();
+
         if (transcript.includes('next')) {
           nextStep();
-        } else if (transcript.includes('previous') || transcript.includes('back')) {
+        } else if (
+          transcript.includes('previous') ||
+          transcript.includes('back')
+        ) {
           previousStep();
         } else if (transcript.includes('repeat')) {
           speakStep(currentStep);
@@ -114,52 +118,60 @@ const VoiceChef = () => {
       <Typography variant="h4" component="h1" gutterBottom>
         Voice Chef
       </Typography>
-      
+
       <Card sx={{ mb: 3 }}>
         <CardContent>
           <Typography variant="h5" gutterBottom>
             {recipe.title}
           </Typography>
-          
+
           <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
             <Typography variant="body2" sx={{ mr: 2 }}>
               Step {currentStep + 1} of {recipe.steps.length}
             </Typography>
-            <Chip 
-              label={isListening ? 'Listening...' : 'Voice Commands Off'} 
+            <Chip
+              label={isListening ? 'Listening...' : 'Voice Commands Off'}
               color={isListening ? 'success' : 'default'}
               size="small"
             />
           </Box>
-          
-          <LinearProgress 
-            variant="determinate" 
-            value={(currentStep + 1) / recipe.steps.length * 100} 
+
+          <LinearProgress
+            variant="determinate"
+            value={((currentStep + 1) / recipe.steps.length) * 100}
             sx={{ mb: 3 }}
           />
-          
+
           <Typography variant="h6" sx={{ mb: 3, minHeight: '60px' }}>
             {recipe.steps[currentStep]}
           </Typography>
-          
-          <Box sx={{ display: 'flex', justifyContent: 'center', gap: 1, mb: 2 }}>
+
+          <Box
+            sx={{ display: 'flex', justifyContent: 'center', gap: 1, mb: 2 }}
+          >
             <IconButton onClick={previousStep} disabled={currentStep === 0}>
               <SkipPrevious />
             </IconButton>
             <IconButton onClick={togglePlayback}>
               {isPlaying ? <Pause /> : <PlayArrow />}
             </IconButton>
-            <IconButton onClick={nextStep} disabled={currentStep === recipe.steps.length - 1}>
+            <IconButton
+              onClick={nextStep}
+              disabled={currentStep === recipe.steps.length - 1}
+            >
               <SkipNext />
             </IconButton>
             <IconButton onClick={() => speakStep(currentStep)}>
               <VolumeUp />
             </IconButton>
-            <IconButton onClick={toggleListening} color={isListening ? 'success' : 'default'}>
+            <IconButton
+              onClick={toggleListening}
+              color={isListening ? 'success' : 'default'}
+            >
               {isListening ? <Mic /> : <MicOff />}
             </IconButton>
           </Box>
-          
+
           <Typography variant="body2" color="text.secondary" align="center">
             Say "next", "previous", or "repeat" while voice commands are active
           </Typography>
@@ -173,15 +185,16 @@ const VoiceChef = () => {
           </Typography>
           <List>
             {recipe.steps.map((step, index) => (
-              <ListItem 
+              <ListItem
                 key={index}
-                sx={{ 
-                  bgcolor: index === currentStep ? 'action.selected' : 'transparent',
+                sx={{
+                  bgcolor:
+                    index === currentStep ? 'action.selected' : 'transparent',
                   borderRadius: 1,
-                  mb: 0.5
+                  mb: 0.5,
                 }}
               >
-                <ListItemText 
+                <ListItemText
                   primary={`${index + 1}. ${step}`}
                   sx={{ opacity: index === currentStep ? 1 : 0.7 }}
                 />

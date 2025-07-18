@@ -1,0 +1,26 @@
+# <type>: <subject>
+# |<---- Using a maximum of 50 characters ---->|
+
+# <body>
+# |<---- Using a maximum of 72 characters ---->|
+
+# <footer>
+
+# Types:
+# feat:     A new feature
+# fix:      A bug fix
+# docs:     Documentation only changes
+# style:    Changes that do not affect the meaning of the code
+# refactor: A code change that neither fixes a bug nor adds a feature
+# perf:     A code change that improves performance
+# test:     Adding missing tests or correcting existing tests
+# chore:    Changes to the build process or auxiliary tools
+#
+# Subject: Short summary in present tense, not capitalized, no period at the end
+#
+# Body: Explain *what* and *why* (not *how*). Include task ID (Jira issue).
+#
+# Footer: Include any breaking changes and GitHub issue references
+#
+# For a full example of a good commit message, see:
+# https://github.com/angular/angular/blob/main/CONTRIBUTING.md#commit

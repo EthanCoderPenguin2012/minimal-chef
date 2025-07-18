@@ -1,0 +1,22 @@
+{
+  "title": "قائمة التسوق",
+  "addItem": "إضافة عنصر",
+  "categories": {
+    "produce": "منتجات طازجة",
+    "dairy": "منتجات الألبان",
+    "meat": "لحوم",
+    "bakery": "مخبوزات",
+    "pantry": "مؤن",
+    "frozen": "مجمدات",
+    "other": "أخرى"
+  },
+  "quantity": "الكمية",
+  "unit": "الوحدة",
+  "item": "العنصر",
+  "category": "الفئة",
+  "clearCompleted": "مسح المكتملة",
+  "clearAll": "مسح الكل",
+  "noItems": "لا توجد عناصر في قائمة التسوق الخاصة بك",
+  "markAllComplete": "تحديد الكل كمكتمل",
+  "markAllIncomplete": "تحديد الكل كغير مكتمل"
+}

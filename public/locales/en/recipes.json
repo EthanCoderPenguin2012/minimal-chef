@@ -1,0 +1,23 @@
+{
+  "title": "Recipes",
+  "newRecipe": "New Recipe",
+  "importRecipe": "Import Recipe",
+  "recipeDetails": "Recipe Details",
+  "ingredients": "Ingredients",
+  "instructions": "Instructions",
+  "prepTime": "Prep Time",
+  "cookTime": "Cook Time",
+  "servings": "Servings",
+  "categories": "Categories",
+  "tags": "Tags",
+  "addToShoppingList": "Add to Shopping List",
+  "noRecipes": "No recipes found",
+  "searchRecipes": "Search recipes",
+  "filterBy": "Filter by",
+  "sortBy": "Sort by",
+  "difficulty": {
+    "easy": "Easy",
+    "medium": "Medium",
+    "hard": "Hard"
+  }
+}
